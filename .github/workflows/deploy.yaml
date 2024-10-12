@@ -35,15 +35,15 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
-          aws-region: eu-west-1
+          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/GithubActionsRole
+          aws-region: ${{ vars.AWS_REGION }}
           audience: sts.amazonaws.com
 
       - name: Initialize Terraform
         run: terraform init
 
       - name: Create deployment plan
-        run: terraform plan -input=false
+        run: terraform plan
 
   terraform-apply:
     runs-on: ubuntu-latest
@@ -69,4 +69,4 @@ jobs:
         run: terraform init
 
       - name: Deploy infrastructure
-        run: terraform apply -auto-approve
+        run: terraform apply
