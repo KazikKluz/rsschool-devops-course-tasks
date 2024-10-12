@@ -61,5 +61,5 @@ resource "aws_iam_role_policy_attachment" "VPCFullAccess" {
 
 resource "aws_iam_role_policy_attachment" "IAMFullAccess" {
   role       = aws_iam_role.GithubActionsRole.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonIAMfFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/IAMFullAccess"
 }
