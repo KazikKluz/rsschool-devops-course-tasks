@@ -19,4 +19,5 @@ variable "repository" {
 variable "account_id" {
   description = "Account id needed for full OIDC string"
   type        = string
+  default = "637423385007"
 }
