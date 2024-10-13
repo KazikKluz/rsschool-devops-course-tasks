@@ -1,4 +1,4 @@
-# Get latest AMI ID for Amazon Linux2 OS
+# Get latest AMI ID for Amazon Linux 2023
 data "aws_ami" "al2023" {
   most_recent = true
   owners      = ["amazon"]
