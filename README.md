@@ -8,6 +8,8 @@
 
 Defines the VPC, subnets, and main networking components. Create public and private subnets within the VPC in separate availability zones. Creates the NAT instance with appropriate security groups and routing to allow internet access from private instances as well as Internet Gateway for the Internet connection
 
+![VPC Resources](image.png)
+
 #### **bastion_host.tf**
 
 Creates the Bastion host in a public subnet to provide SSH access to private instances.
