@@ -4,12 +4,6 @@ variable "aws_region" {
   default     = "eu-west-1"
 }
 
-variable "profile" {
-  description = "AWS profile used for provisioning resources"
-  type        = string
-  default     = "default"
-}
-
 variable "repository" {
   description = "GitHub repository used in CICD pipeline"
   type        = string
