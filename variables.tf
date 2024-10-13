@@ -33,3 +33,15 @@ variable "azs" {
   description = "Default availability zones"
   default     = ["eu-west-1a", "us-west-1b"]
 }
+
+variable "ssh_key" {
+  type = string
+  description = "Key name used to connect to EC2 via SSH"
+  default = "terraform-key"
+}
+
+variable "instance_type"{
+  type = string
+  description = "Type and family of EC2 instance"
+  default = "t2.micro"
+}

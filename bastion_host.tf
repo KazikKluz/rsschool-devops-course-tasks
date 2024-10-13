@@ -14,17 +14,15 @@ data "aws_ami" "al2023" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
 }
 
 resource "aws_instance" "bastion" {
   ami                         = data.aws_ami.al2023.id
-  instance_type               = "t2.micro"
+  instance_type               = var.instance_type
   subnet_id                   = aws_subnet.public_a.id
   associate_public_ip_address = true
+
+  key_name = var.ssh_key
 
   
 
