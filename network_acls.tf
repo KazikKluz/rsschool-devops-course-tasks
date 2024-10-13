@@ -43,7 +43,7 @@ resource "aws_network_acl_rule" "allow_ssh_inbound" {
 # Allow all inbound ICMP
 resource "aws_network_acl_rule" "allow_ping_inbound" {
   network_acl_id = aws_network_acl.rs_acl.id
-  rule_number    = 100
+  rule_number    = 103
   protocol       = "-1" // All protocols
   rule_action    = "allow"
   cidr_block     = "0.0.0.0/0"
