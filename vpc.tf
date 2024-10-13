@@ -1,36 +1,53 @@
 resource "aws_vpc" "rs_vpc" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.vpc_cidr_block
   instance_tenancy = "default"
 
   tags = {
     Name = "RS VPC"
   }
 }
-resource "aws_subnet" "public_a" {
-  vpc_id     = aws_vpc.rs_vpc.id
-  cidr_block = "10.0.0.0/24"
+
+resource "aws_subnet" "public_subnet" {
+  count             = length(var.public_cidrs)
+  vpc_id            = aws_vpc.rs_vpc.id
+  cidr_block        = element(var.public_cidrs, count.index)
+  availability_zone = element(var.azs, count.index)
+
   tags = {
-    Name = "RS Public A"
+    Name = "RS Public Subnet ${count.index + 1}"
   }
 }
-resource "aws_subnet" "public_b" {
-  vpc_id     = aws_vpc.rs_vpc.id
-  cidr_block = "10.0.1.0/24"
+
+resource "aws_subnet" "private_subnet" {
+  count             = length(var.private_cidrs)
+  vpc_id            = aws_vpc.rs_vpc.id
+  cidr_block        = element(var.private_cidrs, count.index)
+  availability_zone = element(var.azs, count.index)
+
   tags = {
-    Name = "RS Public B"
+    Name = "RS Private Subnet ${count.index + 1}"
   }
 }
-resource "aws_subnet" "private_a" {
-  vpc_id     = aws_vpc.rs_vpc.id
-  cidr_block = "10.0.100.0/24"
+
+resource "aws_internet_gateway" "rs_gw" {
+  vpc_id = aws_vpc.rs_vpc.id
+
   tags = {
-    Name = "RS Private A"
+    Name = "RS IGW"
   }
 }
-resource "aws_subnet" "private_b" {
-  vpc_id     = aws_vpc.rs_vpc.id
-  cidr_block = "10.0.101.0/24"
+
+resource "aws_nat_gateway" "rs_nat" {
+  allocation_id = aws_eip.rs_eip.id
+  subnet_id     = aws_subnet.public_subnet[0].id
+
   tags = {
-    Name = "RS Private B"
+    Name = "RS NAT"
   }
+
+  depends_on = [aws_internet_gateway.rs_gw]
+}
+
+resource "aws_eip" "rs_eip" {
+  domain = "vpc"
 }

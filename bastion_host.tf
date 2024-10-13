@@ -19,12 +19,12 @@ data "aws_ami" "al2023" {
 resource "aws_instance" "bastion" {
   ami                         = data.aws_ami.al2023.id
   instance_type               = var.instance_type
-  subnet_id                   = aws_subnet.public_a.id
+  subnet_id                   = aws_subnet.public_subnet[0].id
   associate_public_ip_address = true
 
   key_name = var.ssh_key
 
-  
+
 
   security_groups = [
     aws_security_group.allow_http_and_ssh.id
