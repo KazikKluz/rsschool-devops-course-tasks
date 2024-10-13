@@ -25,7 +25,7 @@ resource "aws_network_acl_rule" "allow_https_inbound" {
   egress         = false
   cidr_block     = "0.0.0.0/0"
   from_port      = 443
-  to_port        = 433
+  to_port        = 443
 }
 
 # Allow inbound SSH (port 22)
@@ -66,7 +66,7 @@ resource "aws_network_acl_rule" "deny_all_inbound" {
 # Allow all outbound traffic
 resource "aws_network_acl_rule" "allow_all_outbound" {
   network_acl_id = aws_network_acl.rs_acl.id
-  rule_number    = 100
+  rule_number    = 300
   protocol       = "-1"
   rule_action    = "allow"
   egress         = true
