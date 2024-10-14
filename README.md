@@ -7,9 +7,9 @@
 - **VPC**: Service that allows you to launch AWS resources in a logically isolated virtual network.
 - **Public Subnets**: These enables communication between resources in the subnet and the internet, as well as with other AWS services
 - **Private Subnets**: These are isolating resources from the public internet and can only be accessed from within the VPC. They can reach Public Internet via NAT Gateway or NAT Instace
-- **Route Tables and Routes** Set of rules that determine where network traffic is directed within a Virtual Private Cloud (VPC).
-- **Security Groups** Stateful rules used to control network traffic at the instance level.
-- **Network ACLs** Stateless rules used to controll network traffic at the subnet level.
+- **Route Tables and Routes**: Set of rules that determine where network traffic is directed within a Virtual Private Cloud (VPC).
+- **Security Groups**: Stateful rules used to control network traffic at the instance level.
+- **Network ACLs**: Stateless rules used to controll network traffic at the subnet level.
 - **Internet Gateway (IGW)**: A horizontally scaled, redundant, and highly available component that enables instances with public IP addresses to access the internet.
 - **NAT Gateway**: A managed Network Address Translation (NAT) service that enables instances in private subnets within a Virtual Private Cloud (VPC) to connect to services outside the VPC, such as the internet or other AWS services, while maintaining security and isolation.
 
