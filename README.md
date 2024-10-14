@@ -2,7 +2,18 @@
 
 ---
 
-### New Files added for Task 2
+### New resources added to infrastructure during this phase:
+
+- **VPC**: Service that allows you to launch AWS resources in a logically isolated virtual network.
+- **Public Subnets**: These enables communication between resources in the subnet and the internet, as well as with other AWS services
+- **Private Subnets**: These are isolating resources from the public internet and can only be accessed from within the VPC. They can reach Public Internet via NAT Gateway or NAT Instace
+- **Route Tables and Routes** Set of rules that determine where network traffic is directed within a Virtual Private Cloud (VPC).
+- **Security Groups** Stateful rules used to control network traffic at the instance level.
+- **Network ACLs** Stateless rules used to controll network traffic at the subnet level.
+- **Internet Gateway (IGW)**: A horizontally scaled, redundant, and highly available component that enables instances with public IP addresses to access the internet.
+- **NAT Gateway**: A managed Network Address Translation (NAT) service that enables instances in private subnets within a Virtual Private Cloud (VPC) to connect to services outside the VPC, such as the internet or other AWS services, while maintaining security and isolation.
+
+### New files added for Task 2
 
 #### **vpc.tf**
 
@@ -16,7 +27,7 @@ Creates the Bastion host in a public subnet to provide SSH access to private ins
 
 #### **security_groups.tf**
 
-Configure the security groups to manage traffic between the NAT instance, private instances, and the internet and to control traffic between the private instance and the Bastion host.
+Configures the security groups to manage traffic between the NAT instance, private instances, and the internet and to control traffic between the private instance and the Bastion host.
 
 #### **routing.tf**
 
@@ -24,7 +35,7 @@ Creates a route table for private subnets, routing traffic through the **NAT ins
 
 #### **network_acls.tf**
 
-Define the private and public NACL rules to control access to and from the subnets. Associates network ACLs (NACLs) with private and public subnets to manage inbound and outbound traffic.
+Defines the private and public NACL rules to control access to and from the subnets. Associates network ACLs (NACLs) with private and public subnets to manage inbound and outbound traffic.
 
 ---
 
@@ -58,4 +69,8 @@ To destroy all resources, run the following command:
 
 ```bash
 terraform destroy
+```
+
+```
+NOTE! If you are planning to provision the infrastructure, then you need to add your own key-pair name for Bastion Host instead of the default one.
 ```
