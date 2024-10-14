@@ -49,12 +49,14 @@ Defines the private and public NACL rules to control access to and from the subn
    ```
 
 2. **Plan and Apply Configuration**  
-   Use the following commands to plan and apply the infrastructure:
+    Use the following commands to plan and apply the infrastructure:
 
    ```bash
    terraform plan
    terraform apply
    ```
+
+   ![GitHub Actions success](image-1.png)
 
 3. **Verify Setup**
    - Ensure the Bastion host is accessible via SSH.
@@ -72,5 +74,5 @@ terraform destroy
 ```
 
 ```
-NOTE! If you are planning to provision the infrastructure, then you need to add your own key-pair name for Bastion Host instead of the default one.
+NOTE! If you are planning to provision the infrastructure to test, then you need to add your own key-pair name for Bastion Host instead of the default one.
 ```
