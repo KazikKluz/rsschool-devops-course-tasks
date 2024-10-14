@@ -13,7 +13,7 @@
 - **Internet Gateway (IGW)**: A horizontally scaled, redundant, and highly available component that enables instances with public IP addresses to access the internet.
 - **NAT Gateway**: A managed Network Address Translation (NAT) service that enables instances in private subnets within a Virtual Private Cloud (VPC) to connect to services outside the VPC, such as the internet or other AWS services, while maintaining security and isolation.
 
-### New files added for Task 2
+### New files added for Task 2:
 
 #### **vpc.tf**
 
@@ -56,7 +56,12 @@ Defines the private and public NACL rules to control access to and from the subn
    terraform apply
    ```
 
-   ![GitHub Actions success](image-1.png)
+```
+NOTE! If you are planning to provision the infrastructure to test, then you need to add your
+own key-pair name for Bastion Host instead of the default one.
+```
+
+![GitHub Actions success](image-1.png)
 
 3. **Verify Setup**
    - Ensure the Bastion host is accessible via SSH.
@@ -71,8 +76,4 @@ To destroy all resources, run the following command:
 
 ```bash
 terraform destroy
-```
-
-```
-NOTE! If you are planning to provision the infrastructure to test, then you need to add your own key-pair name for Bastion Host instead of the default one.
 ```
