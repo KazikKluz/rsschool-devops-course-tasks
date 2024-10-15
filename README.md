@@ -19,7 +19,7 @@
 
 Defines the VPC, subnets, and main networking components. Create public and private subnets within the VPC in separate availability zones. Creates the NAT instance with appropriate security groups and routing to allow internet access from private instances as well as Internet Gateway for the Internet connection
 
-![VPC Resources](image.png)
+![VPC Resources](screenshots/image.png)
 
 #### **bastion_host.tf**
 
@@ -29,6 +29,8 @@ Creates the Bastion host in a public subnet to provide SSH access to private ins
 
 Configures the security groups to manage traffic between the NAT instance, private instances, and the internet and to control traffic between the private instance and the Bastion host.
 
+![Security Group](screenshots/sec_group.png)
+
 #### **routing.tf**
 
 Creates a route table for private subnets, routing traffic through the **NAT instance** for internet access. Configures route tables for the public subnets, routing traffic through the **Internet Gateway (IGW)**.
@@ -36,6 +38,7 @@ Creates a route table for private subnets, routing traffic through the **NAT ins
 #### **network_acls.tf**
 
 Defines the private and public NACL rules to control access to and from the subnets. Associates network ACLs (NACLs) with private and public subnets to manage inbound and outbound traffic.
+![NACL](screenshots/nacl.png)
 
 ---
 
@@ -61,7 +64,7 @@ NOTE! If you are planning to provision the infrastructure to test, then you need
 own key-pair name for Bastion Host instead of the default one.
 ```
 
-![GitHub Actions success](image-1.png)
+![GitHub Actions success](screenshots/image-1.png)
 
 3. **Verify Setup**
    - Ensure the Bastion host is accessible via SSH.
