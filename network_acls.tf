@@ -57,7 +57,7 @@ resource "aws_network_acl_rule" "allow_nodes_communication" {
   rule_number    = 104
   protocol       = "tcp"
   rule_action    = "allow"
-  cidr_block     = "10.0.0.0/16"
+  cidr_block     = "0.0.0.0/0"
   from_port      = 6433
   to_port        = 6433
 }
