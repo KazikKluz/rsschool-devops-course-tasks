@@ -51,6 +51,17 @@ resource "aws_network_acl_rule" "allow_ping_inbound" {
   icmp_code      = "-1" // All ICMP codes
 }
 
+# Allow all K8s nodes communication
+resource "aws_network_acl_rule" "allow_nodes_communication" {
+  network_acl_id = aws_network_acl.rs_acl.id
+  rule_number    = 104
+  protocol       = "TCP"
+  rule_action    = "allow"
+  cidr_block     = "10.0.0.0/16"
+from_port      = 6433
+  to_port        = 6433
+}
+
 # Deny all other inbound traffic
 resource "aws_network_acl_rule" "deny_all_inbound" {
   network_acl_id = aws_network_acl.rs_acl.id
