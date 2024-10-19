@@ -19,7 +19,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "master_node" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
-  subnet_id                   = aws_subnet.private_subnet[0].id
+  subnet_id                   = aws_subnet.public_subnet[1].id
   associate_public_ip_address = true
 
   key_name = var.ssh_key
