@@ -27,7 +27,7 @@ resource "aws_instance" "master_node" {
 
 
   security_groups = [
-    aws_security_group.allow_http_and_ssh.id
+    aws_security_group.cluster_connect.id
   ]
 
   user_data = file("${path.module}/k8s_install.sh")
