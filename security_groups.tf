@@ -68,9 +68,17 @@ resource "aws_vpc_security_group_ingress_rule" "k8s_allow_https" {
 resource "aws_vpc_security_group_ingress_rule" "k8s_nodes_traffic" {
   security_group_id = aws_security_group.cluster_connect.id
   cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 6433
+  from_port         = 6443
   ip_protocol       = "tcp"
-  to_port           = 6433
+  to_port           = 6443
+}
+
+resource "aws_vpc_security_group_ingress_rule" "k8s_nodes_metrics" {
+  security_group_id = aws_security_group.cluster_connect.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 10250
+  ip_protocol       = "tcp"
+  to_port           = 10250
 }
 
 resource "aws_vpc_security_group_ingress_rule" "k8s_allow_ssh" {

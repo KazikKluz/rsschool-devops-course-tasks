@@ -24,8 +24,6 @@ resource "aws_instance" "bastion" {
 
   key_name = var.ssh_key
 
-
-
   security_groups = [
     aws_security_group.allow_http_and_ssh.id
   ]

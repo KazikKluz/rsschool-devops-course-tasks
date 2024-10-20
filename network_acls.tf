@@ -62,6 +62,17 @@ resource "aws_network_acl_rule" "allow_nodes_communication" {
   to_port        = 6433
 }
 
+# Allow all K8s metric server traffic
+resource "aws_network_acl_rule" "k3s_metrics" {
+  network_acl_id = aws_network_acl.rs_acl.id
+  rule_number    = 105
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  from_port      = 10250
+  to_port        = 10250
+}
+
 # Deny all other inbound traffic
 resource "aws_network_acl_rule" "deny_all_inbound" {
   network_acl_id = aws_network_acl.rs_acl.id

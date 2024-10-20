@@ -51,3 +51,4 @@ variable "instance_type" {
   description = "Type and family of EC2 instance"
   default     = "t2.micro"
 }
+
