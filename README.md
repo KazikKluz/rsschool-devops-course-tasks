@@ -44,7 +44,7 @@ NOTE! If you are planning to provision the infrastructure to test, then you need
 own key-pair name for Bastion Host instead of the default one.
 ```
 
-![GitHub Actions success](screenshots/image-1.png)
+![GitHub Actions success](screenshots/green_pipeline.png)
 
 3. **Verify Setup**
 
